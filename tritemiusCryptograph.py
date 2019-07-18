@@ -2,7 +2,7 @@ from cryptographer import Cryptographer
 
 
 def inpFunction():
-    return input('Введите вашу функцию с переменной x, без пробелов')
+    return input('Введите вашу функцию с переменной x, без пробелов --> ')
 
 
 def function(i, s):
