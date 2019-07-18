@@ -72,3 +72,4 @@ s = 'встреча состоится у школы'
 x = cipherGronsfeld(s, 123124)
 print(x)
 print(gronsfeldDeCrypt(x, 123124))
+print('Скажите что это не шутка')
