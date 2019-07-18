@@ -1,8 +1,13 @@
 from cryptographer import Cryptographer
 
 
-def function(x):
-    return 2 * x + 15
+def inpFunction():
+    return input('Введите вашу функцию с переменной x, без пробелов')
+
+
+def function(i, s):
+    x = i
+    return eval(s)
 
 
 class TritemiusCryptographer(Cryptographer):
@@ -13,13 +18,13 @@ class TritemiusCryptographer(Cryptographer):
                     'ю', 'я', '.', ' ', '1', '2', '3', '4', '5', '6', \
                     '7', '8', '9', '0', ',', '-']
 
-
     @staticmethod
     def encrypt(text):
+        s = inpFunction()
         cryptoText = ''
         for i in range(len(text)):
             if text[i] in TritemiusCryptographer.TriALP:
-                newInd = (TritemiusCryptographer.TriALP.index(text[i]) + function(i))\
+                newInd = (TritemiusCryptographer.TriALP.index(text[i]) + function(i, s))\
                          % len(TritemiusCryptographer.TriALP)
                 cryptoText += TritemiusCryptographer.TriALP[newInd]
             else:
@@ -28,10 +33,11 @@ class TritemiusCryptographer(Cryptographer):
 
     @staticmethod
     def decrypt(cryptoText):
+        s = inpFunction()
         deCryptoText = ''
         for i in range(len(cryptoText)):
             if cryptoText[i] in TritemiusCryptographer.TriALP:
-                newInd = (TritemiusCryptographer.TriALP.index(cryptoText[i]) - function(i))\
+                newInd = (TritemiusCryptographer.TriALP.index(cryptoText[i]) - function(i, s))\
                          % len(TritemiusCryptographer.TriALP)
                 deCryptoText += TritemiusCryptographer.TriALP[newInd]
             else:

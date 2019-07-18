@@ -13,4 +13,3 @@ print(GronsfeldCryptograph.decrypt(m, 1213))
 x = TritemiusCryptographer.encrypt(s)
 print(x)
 print(TritemiusCryptographer.decrypt(x))
-
