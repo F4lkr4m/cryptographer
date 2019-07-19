@@ -1,34 +1,71 @@
 from caesarCryptograph import CaesarCryptograph
 from gronsfeldCryptograph import GronsfeldCryptograph
 from tritemiusCryptograph import TritemiusCryptographer
+import tkinter as tk
 
-print('Привет, юзер! Как ты? Надеюсь у тебя все хорошо! Ну ладно, выбери что ты хочешь сделать! :)')
-choose1 = input('Зашифровать сообщение или расшифровать? 1 - зашифровать 2 - расшифровать / любое другое значение\
- - выход--> ')
-if choose1 == '1':
-    choose2 = input('Выбери свой метод шифровки: 1 - шифр Цезаря 2 - шифр Гронсфельда 3 - шифр Тридемиуса --> ')
-    if choose2 == '1':
-        text = input('Введите текст, который вы хотите зашифровать, используйте маленькие буквы! ;)\n')
-        key = int(input('Введите ключ для зашифровки --> '))
-        print(CaesarCryptograph.encrypt(text, key))
-    elif choose2 == '2':
-        text = input('Введите текст, который вы хотите зашифровать, используйте маленькие буквы! ;)\n')
-        key = int(input('Введите ключ для зашифровки --> '))
-        print(GronsfeldCryptograph.encrypt(text, key))
-    elif choose2 == '3':
-        text = input('Введите текст, который вы хотите зашифровать, используйте маленькие буквы! ;)\n')
-        print(TritemiusCryptographer.encrypt(text))
-elif choose1 == '2':
-    choose2 = input('Выбери метод расшифровки сообщения: 1 - шифр Цезаря 2 - шифр Гронсфельда 3 - шифр Тридемиуса --> ')
-    if choose2 == '1':
-        text = input('Введите текст, который вы хотите расшифровать, используйте маленькие буквы! ;)\n')
-        key = int(input('Введите ключ для расшифровать --> '))
-        print(CaesarCryptograph.decrypt(text, key))
-    elif choose2 == '2':
-        text = input('Введите текст, который вы хотите расшифровать, используйте маленькие буквы! ;)\n')
-        key = int(input('Введите ключ для расшифровать --> '))
-        print(GronsfeldCryptograph.decrypt(text, key))
-    elif choose2 == '3':
-        text = input('Введите текст, который вы хотите расшифровать, используйте маленькие буквы! ;)\n')
-        print(TritemiusCryptographer.decrypt(text))
-input('\nВведите любой символ для выхода ')
+
+class Main(tk.Frame):
+    def __init__(self, root):
+        super().__init__(root)
+        self.init_main()
+
+    def init_main(self):
+        frame1 = tk.Frame(root, bg='white')
+        frame2 = tk.Frame(root, bg='white')
+        frame3 = tk.Frame(root, bg='white')
+
+        textbox1 = tk.Text(frame2, font='Arial 14', bd=2)
+        textbox2 = tk.Text(frame3, font='Arial 14', bd=2)
+
+        label1 = tk.Label(frame2, font='Arial 10', text='Введите ваше сообщение:', bg='white')
+        label2 = tk.Label(frame3, font='Arial 10', text='Зашифрованное сообщение:', bg='white')
+        label3 = tk.Label(frame1, font='Arial 10', text='Код/функция:', bg='white')
+
+        btn = tk.Button(frame2, text='Зашифровать', font='Arial 10', bd=2)
+
+        entry = tk.Entry(frame1, font='Arial 10', bd=2)
+
+        var = tk.IntVar()
+        var.set(1)
+
+        rbut1 = tk.Radiobutton(frame1, text='шифр Цезаря', font='Arial 12', variable=var, value=1, bg='white')
+        rbut2 = tk.Radiobutton(frame1, text='шифр Гронсфельда', font='Arial 12', variable=var, value=2, bg='white')
+        rbut3 = tk.Radiobutton(frame1, text='шифр Тридемиуса', font='Arial 12', variable=var, value=3, bg='white')
+
+        var1 = tk.IntVar()
+        var1.set(1)
+
+        rbut4 = tk.Radiobutton(frame1, text='Зашифровать', font='Arial 12', variable=var1, value=1, bg='white')
+        rbut5 = tk.Radiobutton(frame1, text='Расшифровать', font='Arial 12', variable=var1, value=2, bg='white')
+
+        rbut1.place(x=10, y=40)
+        rbut2.place(x=10, y=80)
+        rbut3.place(x=10, y=120)
+
+        rbut4.place(x=250, y=40)
+        rbut5.place(x=250, y=80)
+
+        frame1.place(x=200, y=100, anchor="c", height=200, width=400)
+        frame2.place(x=200, y=300, anchor="c", height=200, width=400)
+        frame3.place(x=200, y=500, anchor="c", height=200, width=400)
+
+        entry.place(x=275, y=160, height=23, width=100)
+        label3.place(x=175, y=160, height=23, width=100)
+
+        textbox1.place(x=200, y=100, anchor="c", height=100, width=300)
+        label1.place(x=33, y=25, height=20, width=200)
+        textbox2.place(x=200, y=100, anchor="c", height=100, width=300)
+        label2.place(x=37, y=25, height=20, width=200)
+
+        btn.place(x=290, y=170, height=30, width=100)
+
+
+if __name__ == '__main__':
+    root = tk.Tk()
+    app = Main(root)
+    app.pack()
+    root.title('Cryptographer')
+    root.geometry('400x600')
+    root.resizable(False, False)
+    root.mainloop()
+
