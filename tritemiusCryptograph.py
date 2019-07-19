@@ -19,8 +19,8 @@ class TritemiusCryptographer(Cryptographer):
                     '7', '8', '9', '0', ',', '-']
 
     @staticmethod
-    def encrypt(text):
-        s = inpFunction()
+    def encrypt(text, func):
+        s = func
         cryptoText = ''
         for i in range(len(text)):
             if text[i] in TritemiusCryptographer.TriALP:
@@ -32,8 +32,8 @@ class TritemiusCryptographer(Cryptographer):
         return cryptoText
 
     @staticmethod
-    def decrypt(cryptoText):
-        s = inpFunction()
+    def decrypt(cryptoText, func):
+        s = func
         deCryptoText = ''
         for i in range(len(cryptoText)):
             if cryptoText[i] in TritemiusCryptographer.TriALP:

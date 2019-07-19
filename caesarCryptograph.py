@@ -5,6 +5,7 @@ class CaesarCryptograph(Cryptographer):
 
     @staticmethod
     def encrypt(text, key):
+        key = int(key)
         cryptoText = ''
         if key > 32:
             key %= 32
@@ -21,6 +22,7 @@ class CaesarCryptograph(Cryptographer):
 
     @staticmethod
     def decrypt(cryptoText, key):  # decrypt
+        key = int(key)
         if key > 32:
             key %= 32
         deCryptoText = ''
