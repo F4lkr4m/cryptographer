@@ -14,6 +14,7 @@ class TritemiusCryptographer(Cryptographer):
 
     @staticmethod
     def encrypt(text, func):
+        text = text.lower()
         s = func
         cryptoText = ''
         for i in range(len(text)):
@@ -27,6 +28,7 @@ class TritemiusCryptographer(Cryptographer):
 
     @staticmethod
     def decrypt(cryptoText, func):
+        cryptoText = cryptoText.lower()
         s = func
         deCryptoText = ''
         for i in range(len(cryptoText)):

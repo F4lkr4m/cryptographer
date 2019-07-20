@@ -5,6 +5,7 @@ class GronsfeldCryptograph(Cryptographer):
 
     @staticmethod
     def encrypt(text, key):
+        text = text.lower()
         cryptoText = ''
         key = str(key)
         for i in range(len(text)):
@@ -21,6 +22,7 @@ class GronsfeldCryptograph(Cryptographer):
 
     @staticmethod
     def decrypt(cryptoText, key):
+        cryptoText = cryptoText.lower()
         deCryptoText = ''
         key = str(key)
         for i in range(len(cryptoText)):
