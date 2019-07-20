@@ -2,6 +2,7 @@ from caesarCryptograph import CaesarCryptograph
 from gronsfeldCryptograph import GronsfeldCryptograph
 from tritemiusCryptograph import TritemiusCryptographer
 import tkinter as tk
+import pyperclip
 
 class Main(tk.Frame):
     def __init__(self, root):
@@ -41,6 +42,18 @@ class Main(tk.Frame):
             if x != '':
                 textbox2.insert('1.0', x)
 
+        def copy1(event):
+            pyperclip.copy(textbox1.get('1.0', 'end'))
+
+        def copy2(event):
+            pyperclip.copy(textbox2.get('1.0', 'end'))
+
+        def paste(event):
+            copied_text = pyperclip.paste()
+            if textbox1.get('1.0', 'end') != '':
+                textbox1.delete('1.0', 'end')
+            textbox1.insert('1.0', copied_text)
+
         frame1 = tk.Frame(root, bg='white')
         frame2 = tk.Frame(root, bg='white')
         frame3 = tk.Frame(root, bg='white')
@@ -54,6 +67,9 @@ class Main(tk.Frame):
 
         btn = tk.Button(frame3, text='Зашифровать', font='Arial 10', bd=2)
         btn2 = tk.Button(frame3, text='Расшифровать', font='Arial 10', bd=2)
+        btn3 = tk.Button(frame2, text='Скопировать', font='Arial 10', bd=2)
+        btn4 = tk.Button(frame2, text='Вставить', font='Arial 10', bd=2)
+        btn5 = tk.Button(frame3, text='Скопировать', font='Arial 10', bd=2)
 
         entry = tk.Entry(frame1, font='Arial 10', bd=2)
 
@@ -84,6 +100,13 @@ class Main(tk.Frame):
         btn.bind('<Button-1>', encrypt)
         btn2.place(x=290, y=160, height=30, width=100)
         btn2.bind('<Button-1>', decrypt)
+        btn3.place(x=290, y=160, height=30, width=100)
+        btn3.bind('<Button-1>', copy1)
+        btn4.place(x=180, y=160, height=30, width=100)
+        btn4.bind('<Button-1>', paste)
+        btn5.place(x=70, y=160, height=30, width=100)
+        btn5.bind('<Button-1>', copy2)
+
 
 
 if __name__ == '__main__':
