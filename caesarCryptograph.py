@@ -1,5 +1,5 @@
 from cryptographer import Cryptographer
-
+import random
 
 class CaesarCryptograph(Cryptographer):
 
@@ -7,8 +7,10 @@ class CaesarCryptograph(Cryptographer):
     def encrypt(text, key):
         key = int(key)
         cryptoText = ''
-        if key > 32:
-            key %= 32
+        if key > 72:
+            key %= 72
+        if key == 72:
+            key = 41
         for i in range(len(text)):  # encrypt
             if text[i] in Cryptographer.RUS_ALP:
                 if Cryptographer.RUS_ALP.index(text[i]) + key > len(Cryptographer.RUS_ALP) - 1:
